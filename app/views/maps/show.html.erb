@@ -1,13 +1,6 @@
-<p>
-  <b>Name:</b>
-  <%=h @map.name %>
-</p>
+<h1><%= @map.name %></h1>
 
-<p>
-  <b>User:</b>
-  <%=h @map.user %>
-</p>
-
+<%= render :partial => 'map', :object => @map_view %> 
 
 <%= link_to 'Edit', edit_map_path(@map) %> |
 <%= link_to 'Back', maps_path %>
