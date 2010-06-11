@@ -1,4 +1,15 @@
-<h1><%= @map.name %></h1>
+<% form_for(Point.new) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :latitude %>
+    <%= f.text_field :lat %>
+    <%= f.label :longitude %>
+    <%= f.text_field :lon %>
+    <%= f.submit 'Create', :class => "awesome blue button" %>
+  </p>
+<% end %>
+
 
 <%= render :partial => 'map', :object => @map_view %> 
 

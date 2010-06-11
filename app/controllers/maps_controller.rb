@@ -17,8 +17,8 @@ class MapsController < ApplicationController
     
     @map_view = GMap.new("map_div")
     @map_view.control_init(:large_map => true,:map_type => true)
-    @map_view.center_zoom_init([75.5,-42.56],4)
-    @map_view.overlay_init(GMarker.new([75.6,-42.467],:title => "Hello", :info_window => "Info! Info!"))
+    @map_view.center_zoom_init([38.890498,-94.818192],4)
+    @map_view.overlay_init(GMarker.new([38.890498,-94.818192],:title => "Hello", :info_window => "Info! Info!"))
 
     respond_to do |format|
       format.html # show.html.erb

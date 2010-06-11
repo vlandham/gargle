@@ -19,6 +19,8 @@ class PointTest < ActiveSupport::TestCase
       semi_deg = Point.create(:lat => @location[:lat][:semi], :lon => @location[:lon][:semi])
       assert_in_delta @location[:lat][:degree], semi_deg.lat, 0.00001
       assert_in_delta @location[:lon][:degree], semi_deg.lon, 0.00001
+      assert_equal semi_deg.lat_sc, @location[:lat][:semi]
+      assert_equal semi_deg.lon_sc, @location[:lon][:semi]
     end
     
     should "convert degree lat lon to semi circles" do
