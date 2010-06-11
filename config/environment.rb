@@ -42,4 +42,7 @@ Rails::Initializer.run do |config|
   config.gem "geokit"
   
   config.gem "paperclip"
+  
+  config.gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.github.com"
+
 end

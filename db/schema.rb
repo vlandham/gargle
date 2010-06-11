@@ -9,11 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100524152344) do
+ActiveRecord::Schema.define(:version => 20100524155323) do
 
   create_table "maps", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "points", :force => true do |t|
+    t.float    "lat"
+    t.float    "lon"
+    t.string   "description"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
