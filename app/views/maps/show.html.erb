@@ -1,4 +1,4 @@
-<% form_for(Point.new) do |f| %>
+<% form_for([@map, Point.new]) do |f| %>
   <%= f.error_messages %>
 
   <p>

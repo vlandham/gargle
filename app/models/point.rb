@@ -1,4 +1,5 @@
 class Point < ActiveRecord::Base
+  belongs_to :path
   require 'conversions.rb'
   before_validation :convert_lat_lon
   validates_presence_of :lat, :lon
