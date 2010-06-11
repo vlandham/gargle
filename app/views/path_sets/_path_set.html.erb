@@ -1,0 +1,17 @@
+<div class="path_set">
+	<h2>Waypoint Set: <%= path_set.name unless path_set.name.nil? %></h2>
+	<table>
+	<tr>
+		<th>Latitude (semicircle)</th>
+		<th>Longitude (semicircle)</th>
+		<th>Latitude (degrees)</th>
+		<th>Longitude (degrees)</th>
+	</tr>
+
+	<% path_set.paths.each do |path| %>
+		<td><%=h path.point.lat_sc %></td>
+		<td><%=h path.point.lon_sc %></td>
+		<td><%=h path.point.lat %></td>
+		<td><%=h path.point.lon %></td>
+	<% end %>
+</div>
