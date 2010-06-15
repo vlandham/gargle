@@ -44,5 +44,7 @@ Rails::Initializer.run do |config|
   config.gem "paperclip"
   
   config.gem "thoughtbot-shoulda", :lib => "shoulda", :source => "http://gems.github.com"
+  
+  config.gem "devise", :version => '1.0.7'
 
 end

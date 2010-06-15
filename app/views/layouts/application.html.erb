@@ -21,6 +21,12 @@
 <div class="container">
 <div id="header">
 	<%= image_tag("logo.png") %>
+	<% if user_signed_in? %>
+		Signed in as <%= current_user.email %>
+		<%= link_to "sign out", destroy_user_session_path %>	
+	<% else %>
+		<%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %>
+	<% end %>
 	<% if !flash.empty? %>
 		<div id="flash-notice"><%= flash[:notice] %></div>
 	<%end%>
