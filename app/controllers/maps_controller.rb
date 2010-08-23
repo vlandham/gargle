@@ -20,15 +20,15 @@ class MapsController < ApplicationController
     @map = Map.find(params[:id])
     
     @map_view = GMap.new("map")
-    @map_view.control_init(:large_map => true,:map_type => true)
-    @map_view.center_zoom_init([38.890498,-94.818192],4)
+    @map_view.control_init(:large_map => true, :map_type => true)
+    @map_view.center_zoom_init([38.890498,-94.818192], 5)
     @map_view.overlay_init(GMarker.new([38.890498,-94.818192],:title => "Hello", :info_window => "Info! Info!"))
     
     @path_sets = @map.path_sets
     
     @path_sets.each do |path_set|
       path_set.paths.each do |path|
-        @map_view.overlay_init(GMarker.new([path.point.lat,path.point.lon],:title => "Hello", :info_window => "Info! Info!"))
+        @map_view.overlay_init(path.point.to_marker)
       end
     end
 

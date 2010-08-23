@@ -22,4 +22,19 @@ class Point < ActiveRecord::Base
     end
   end
   
+  def formatted_description
+    des = self.name ? self.name.to_s : ""
+    des += "<b>lat:</b> #{self.lat_sc}<br/><b>lon: </b>#{self.lon_sc}"
+    if self.description
+      des += "<br/>" + self.description
+    end
+    des
+  end
+  
+  def to_marker
+    title = self.name ? self.name : ""
+    description = self.formatted_description
+    GMarker.new([self.lat,self.lon],:title => title, :info_window => description)
+  end
+  
 end
