@@ -1,9 +1,13 @@
-ActionController::Routing::Routes.draw do |map|
-  map.devise_for :users
-
-  map.resources :maps, :has_many => :points
+ActionController::Routing::Routes.draw do |mapping|
+  mapping.devise_for :users
   
-  map.root :controller => 'map'
+  mapping.resources :user, :shallow => true do |user|
+    user.resources :maps do |map|
+      map.resources :points
+    end
+  end
+  
+  mapping.root :controller => 'maps'
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -44,6 +48,6 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   # Note: These default routes make all actions in every controller accessible via GET requests. You should
   # consider removing or commenting them out if you're using named routes and resources.
-  map.connect ':controller/:action/:id'
-  map.connect ':controller/:action/:id.:format'
+  mapping.connect ':controller/:action/:id'
+  mapping.connect ':controller/:action/:id.:format'
 end

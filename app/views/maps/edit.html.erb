@@ -7,14 +7,11 @@
     <%= f.label :name %><br />
     <%= f.text_field :name %>
   </p>
-  <p>
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
-  </p>
+
   <p>
     <%= f.submit 'Update' %>
   </p>
 <% end %>
 
 <%= link_to 'Show', @map %> |
-<%= link_to 'Back', maps_path %>
+<%= link_to 'Back', user_maps_path(current_user) %>

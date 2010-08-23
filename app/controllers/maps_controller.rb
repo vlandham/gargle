@@ -2,7 +2,11 @@ class MapsController < ApplicationController
   # GET /maps
   # GET /maps.xml
   def index
-    @maps = Map.all
+    if user_signed_in?
+      @maps = current_user.maps.all
+    else
+      @maps = []
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -54,6 +58,7 @@ class MapsController < ApplicationController
   # POST /maps.xml
   def create
     @map = Map.new(params[:map])
+    @map.user = current_user
 
     respond_to do |format|
       if @map.save
