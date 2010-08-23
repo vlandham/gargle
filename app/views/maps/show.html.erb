@@ -13,7 +13,6 @@
 
 <%= render :partial => 'map', :object => @map_view %> 
 
-<%= link_to 'Edit', edit_map_path(@map) %> |
-<%= link_to 'Back', maps_path %>
+<%= link_to 'Edit', edit_map_path(@map) %>
 
 <%= render :partial => 'path_sets/path_set', :collection => @path_sets %> 

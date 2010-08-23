@@ -1,4 +1,4 @@
-<div class="path_set">
+<div class="path-set">
 	<h2>Waypoint Set: <%= path_set.name unless path_set.name.nil? %></h2>
 	<table>
 	<tr>
@@ -9,9 +9,11 @@
 	</tr>
 
 	<% path_set.paths.each do |path| %>
-		<td><%=h path.point.lat_sc %></td>
-		<td><%=h path.point.lon_sc %></td>
-		<td><%=h path.point.lat %></td>
-		<td><%=h path.point.lon %></td>
+		<tr>
+			<td><%=h path.point.lat_sc %></td>
+			<td><%=h path.point.lon_sc %></td>
+			<td><%=h path.point.lat %></td>
+			<td><%=h path.point.lon %></td>
+		</tr>
 	<% end %>
 </div>
