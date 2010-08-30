@@ -26,11 +26,16 @@ class MapsController < ApplicationController
     
     @path_sets = @map.path_sets
     
+    point_group = {}
+    
     @path_sets.each do |path_set|
       path_set.paths.each do |path|
-        @map_view.overlay_init(path.point.to_marker)
+        point_group[path.point.id] = path.point.to_marker        
       end
     end
+    
+    @map_view.overlay_global_init(GMarkerGroup.new(true, point_group), "marker_group")
+
 
     respond_to do |format|
       format.html # show.html.erb

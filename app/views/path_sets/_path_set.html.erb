@@ -6,6 +6,8 @@
 		<th>Longitude (semicircle)</th>
 		<th>Latitude (degrees)</th>
 		<th>Longitude (degrees)</th>
+		<th></th>
+		<th></th>
 	</tr>
 
 	<% path_set.paths.each do |path| %>
@@ -14,6 +16,8 @@
 			<td><%=h path.point.lon_sc %></td>
 			<td><%=h path.point.lat %></td>
 			<td><%=h path.point.lon %></td>
+			<td><%= link_to_function 'Show',"marker_group.showMarker(#{path.point.id});return false", :class => "awesome small button" %></td>
+			<td><%= link_to 'Destroy', path.point, :confirm => 'Are you sure?', :method => :delete, :class => "awesome orange small button" %></td>			
 		</tr>
 	<% end %>
 </div>

@@ -1,5 +1,6 @@
 <% content_for :header do %>  
 	<%= GMap.header %>
+	<%= javascript_include_tag("markerGroup") %>
 	<%= map.to_html unless map.blank? %>
 <% end %> 
 
