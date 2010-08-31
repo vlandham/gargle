@@ -61,12 +61,12 @@ class PointsController < ApplicationController
   # DELETE /points/1
   # DELETE /points/1.xml
   def destroy
-    @map = Map.find(params[:map_id])
-    @point = @map.points.find(params[:id])
+    map = Map.find(params[:map_id])
+    @point = Point.find(params[:id])
     @point.destroy
 
     respond_to do |format|
-      format.html { redirect_to(map_url(@map)) }
+      format.html { redirect_to(map_url(map)) }
       format.xml  { head :ok }
     end
   end 
