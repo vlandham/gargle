@@ -36,7 +36,11 @@ class Point < ActiveRecord::Base
   def to_marker
     title = self.name ? self.name : ""
     description = self.formatted_description
-    GMarker.new([self.lat,self.lon],:title => title, :info_window => description)
+    GMarker.new(self.location,:title => title, :info_window => description)
+  end
+  
+  def location
+    [self.lat, self.lon]
   end
   
   private

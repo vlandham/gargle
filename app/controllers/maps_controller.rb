@@ -21,15 +21,19 @@ class MapsController < ApplicationController
     
     @map_view = GMap.new("map")
     @map_view.control_init(:large_map => true, :map_type => true)
-    @map_view.center_zoom_init([38.890498,-94.818192], 5)
-    @map_view.overlay_init(GMarker.new([38.890498,-94.818192],:title => "Hello", :info_window => "Info! Info!"))
+    @map_view.center_zoom_init([38.890498,-94.818192], 9)
     
     @path_sets = @map.path_sets
     
     point_group = {}
       @path_sets.each do |path_set|
         path_set.paths.each do |path|
-          point_group[path.point.id] = path.point.to_marker unless path.point.nil?     
+          unless path.point.nil?
+            point_group[path.point.id] = path.point.to_marker
+            if point_group.size == 1
+              @map_view.center_zoom_init(path.point.location, 9)
+            end
+          end           
         end
       end
 
