@@ -18,7 +18,7 @@
 			<td><%=h path.point.lat %></td>
 			<td><%=h path.point.lon %></td>
 			<td><%= link_to_function 'Show',"marker_group.showMarker(#{path.point.id});return false", :class => "awesome small button" %></td>
-			<td><%= link_to 'Destroy',[ :id => path.point,:map_id => map.id], :confirm => 'Are you sure?', :method => :delete, :class => "awesome orange small button" %></td>			
+			<td><%= link_to 'Destroy', [ :id => path.point,:map_id => map.id], :confirm => 'Are you sure?', :method => :delete, :class => "orange awesome small button" %></td>			
 		</tr>
 	<% end %>
 	<% end %>
