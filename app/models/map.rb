@@ -6,9 +6,8 @@ class Map < ActiveRecord::Base
     count = 0
     self.path_sets.each do |set|
       count += set.paths.count
-
-end
-count
+    end
+    count
   end
   
 end
