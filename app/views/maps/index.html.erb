@@ -3,7 +3,7 @@
 	
 	<% @maps.each do |map| %>
 	  <ul>
-	    <li><%=link_to map.name, map %></li>
+	    <li><%=link_to map.name, map %> (<%=h map.point_counts %> waypoint)</li>
 	  </ul>
 	<% end %>
 	

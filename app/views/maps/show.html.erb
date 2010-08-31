@@ -11,8 +11,11 @@
 <% end %>
 
 
-<%= render :partial => 'map', :object => @map_view %> 
+<%= render :partial => 'map', :object => @map_view %>
+ 
+<br/><br/>
 
-<%= link_to 'Edit', edit_map_path(@map) %>
+<%= link_to 'Edit Map', edit_map_path(@map), :class => "awesome small button" %>
+<%= link_to 'Delete Map', @map, :method => :delete, :confirm => 'Are you sure?', :class => "red awesome small button" %>
 
 <%= render :partial => 'path_sets/path_set', :collection => @path_sets, :locals => { :map => @map } %> 
