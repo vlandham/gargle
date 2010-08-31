@@ -15,4 +15,4 @@
 
 <%= link_to 'Edit', edit_map_path(@map) %>
 
-<%= render :partial => 'path_sets/path_set', :collection => @path_sets %> 
+<%= render :partial => 'path_sets/path_set', :collection => @path_sets, :locals => { :map => @map } %> 

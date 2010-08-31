@@ -1,3 +1,3 @@
 class Path < ActiveRecord::Base
-  has_one :point
+  has_one :point, :dependent => :destroy
 end

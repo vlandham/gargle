@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :maps
+  has_many :maps, :dependent => :destroy
   
   # Include default devise modules. Others available are:
   # :http_authenticatable, :token_authenticatable, :confirmable, :lockable, :timeoutable and :activatable

@@ -27,13 +27,12 @@ class MapsController < ApplicationController
     @path_sets = @map.path_sets
     
     point_group = {}
-    
-    @path_sets.each do |path_set|
-      path_set.paths.each do |path|
-        point_group[path.point.id] = path.point.to_marker        
+      @path_sets.each do |path_set|
+        path_set.paths.each do |path|
+          point_group[path.point.id] = path.point.to_marker unless path.point.nil?     
+        end
       end
-    end
-    
+
     @map_view.overlay_global_init(GMarkerGroup.new(true, point_group), "marker_group")
 
 

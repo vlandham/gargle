@@ -1,8 +1,10 @@
 class Point < ActiveRecord::Base
-  belongs_to :path
   require 'conversions.rb'
+  
+  belongs_to :path
   before_validation :convert_lat_lon
   validates_presence_of :lat, :lon
+  after_destroy :destroy_associated_path
   
   def lat_sc
     degrees_to_semicircle self.lat
@@ -35,6 +37,12 @@ class Point < ActiveRecord::Base
     title = self.name ? self.name : ""
     description = self.formatted_description
     GMarker.new([self.lat,self.lon],:title => title, :info_window => description)
+  end
+  
+  private
+  
+  def destroy_associated_path
+    self.path.destroy if self.path
   end
   
 end
