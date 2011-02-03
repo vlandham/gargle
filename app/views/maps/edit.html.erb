@@ -1,4 +1,4 @@
-<h1>Editing map</h1>
+<h1 class="map-name"><%=h @map.name %></h1>
 
 <% form_for(@map) do |f| %>
   <%= f.error_messages %>
@@ -13,5 +13,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @map %> |
-<%= link_to 'Back', user_maps_path(current_user) %>
+<%= link_to '< Cancel', @map, :class => "blue awesome small button" %> 

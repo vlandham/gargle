@@ -105,6 +105,90 @@ a:hover { color: #fff; background-color:#000; }
 	border: #aeaeae solid 8px;
 }
 
+h1.map-name {
+	text-align: center;
+	background: #3f3f3f;
+	-moz-border-radius: 1.5em;
+	-webkit-border-radius: 1.5em;
+	border-radius: 1.5em;
+	color: #ffffff;
+	margin: auto;
+	margin-bottom: 1em;
+	padding:10px;
+	width:60%;
+}
+
+#map-list {
+	width: 60%;
+	background: #efefef;
+	-moz-border-radius: 1.5em;
+	-webkit-border-radius: 1.5em;
+	border-radius: 1.5em;
+	margin: 2em auto 2em;
+	padding:20px;
+}
+
+#map-list #navcontainer { width: 100%; }
+
+#map-list #navcontainer ul {
+	margin-left: 0;
+	padding-left: 0;
+	list-style-type: none;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#map-list #navcontainer li a {
+	font-size: 2em;
+	display: block;
+	padding-top: 3%;
+	padding-bottom: 3%;
+	padding-left: 2%;
+	padding-right: 2%;
+	width: 80%;
+	line-height: 1.0em;
+	margin: auto;
+	text-align:center;
+}
+
+#map-list .remove-map {
+	float: right;
+	font-size: 0.5em;
+}
+
+#map-list #navcontainer a:link, #navlist a:visited
+{
+color: #000;
+text-decoration: none;
+}
+
+#map-list #navcontainer a:hover
+{
+background-color: #369;
+color: #fff;
+	-moz-border-radius: 1.5em;
+	-webkit-border-radius: 1.5em;
+	border-radius: 1.5em;
+}
+
+#welcome {
+	width: 70%;
+	background: #efefef;
+	-moz-border-radius: 1.5em;
+	-webkit-border-radius: 1.5em;
+	border-radius: 1.5em;
+	margin: 2em auto 2em;
+	padding:20px;
+	text-align: center;
+}
+
+#map-list h1 {
+	text-align: center;
+}
+
+#map-list a.new-map {
+	margin-left: 30px;
+}
+
 table {
 	margin: auto;
 }

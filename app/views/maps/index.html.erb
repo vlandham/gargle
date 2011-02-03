@@ -1,15 +1,20 @@
 <% if user_signed_in? %>
-	<h1><%= current_user.name.capitalize %>'s maps</h1>
+	<div id="map-list">
+		<h1><%= current_user.name.capitalize %>'s Maps</h1>
+		<div id="navcontainer">
+		<% @maps.each do |map| %>
+		  <ul id="navlist">
+		    <li><%=link_to map.name+" ( "+pluralize( map.point_counts, "waypoint")+" ) ", map %></li> <span class="remove-map"><%= link_to 'Delete', map, :method => :delete, :confirm => 'Are you sure?', :class => "red awesome small button" %></span>
+		  </ul>
+		<% end %>
+		</div>
+		
+		<br />
 	
-	<% @maps.each do |map| %>
-	  <ul>
-	    <li><%=link_to map.name, map %> (<%=h map.point_counts %> waypoint)</li>
-	  </ul>
-	<% end %>
-	
-	<br />
-
-	<%= link_to 'New map', new_user_map_path(current_user) %>
+		<p><%= link_to 'New Map!', new_user_map_path(current_user), :class => 'new-map orange awesome button' %></p>
+	</div>
 <% else %>
-	<h2>Welcome! <%= link_to "sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %> to start creating maps</h2>
+	<div id="welcome">
+		<h2>Welcome! <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "sign in", new_user_session_path %> to start creating maps</h2>
+	</div>
 <% end%>
