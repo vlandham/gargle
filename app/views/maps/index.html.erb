@@ -2,11 +2,21 @@
 	<div id="map-list">
 		<h1><%= current_user.name.capitalize %>'s Maps</h1>
 		<div id="navcontainer">
-		<% @maps.each do |map| %>
-		  <ul id="navlist">
-		    <li><%=link_to map.name+" ( "+pluralize( map.point_counts, "waypoint")+" ) ", map %></li> <span class="remove-map"><%= link_to 'Delete', map, :method => :delete, :confirm => 'Are you sure?', :class => "red awesome small button" %></span>
-		  </ul>
-		<% end %>
+			<ul class="maps">
+				<% @maps.each do |map| %>
+					<li class="maplist">
+		  				<ul class="mapstats">
+		  					<li class="waypoints"><%= " ( "+pluralize( map.point_counts, "waypoint")+" ) " %></li>
+		  				</ul>
+						<h3><%=link_to map.name, map %></h3>
+						<div class="mapbody">
+							<div class="mapspace"></div>
+							<p class="remove-map"><%= link_to 'Delete', map, :method => :delete, :confirm => 'Are you sure?', :class => "red awesome small button" %></p>
+							<div class="clearfix"></div>
+						</div>
+		 			</li>		  
+				<% end %>
+			</ul>
 		</div>
 		
 		<br />
