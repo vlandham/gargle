@@ -10,6 +10,7 @@
 		  				</ul>
 						<h3><%=link_to map.name, map %></h3>
 						<div class="mapbody">
+							<p class="updated-at">Updated: <%= map.updated_at.to_formatted_s(:long_ordinal) %></p>
 							<div class="mapspace"></div>
 							<p class="remove-map"><%= link_to 'Delete', map, :method => :delete, :confirm => 'Are you sure?', :class => "red awesome small button" %></p>
 							<div class="clearfix"></div>
