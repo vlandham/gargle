@@ -1,26 +1,32 @@
 <div class="path-set">
-	<h2>Waypoint Set: <%= path_set.name unless path_set.name.nil? %></h2>
-	<table>
-	<tr>
-		<th>Latitude (semicircle)</th>
-		<th>Longitude (semicircle)</th>
-		<th>Latitude (degrees)</th>
-		<th>Longitude (degrees)</th>
-		<th></th>
-		<th></th>
-	</tr>
-
-	<% path_set.paths.each do |path| %>
-	<% if path.point %>
+	<h2>Waypoint Set: <%= path_set.name unless path_set.name.nil? %> 
+	<span><%= link_to_function 'hide',"#{path_set.unique_name}.deactivate();$('table_#{path_set.unique_name}').hide();return false", :class => "awesome small button" %></span>
+	<span><%= link_to_function 'show',"#{path_set.unique_name}.activate();$('table_#{path_set.unique_name}').show();return false", :class => "awesome small button" %></span>
+	</h2>
+	<div id="table_<%= path_set.unique_name %>" >
+		<table>
 		<tr>
-			<td><%=h path.point.lat_sc %></td>
-			<td><%=h path.point.lon_sc %></td>
-			<td><%=h path.point.lat %></td>
-			<td><%=h path.point.lon %></td>
-			<td><%= link_to_function 'Show',"marker_group.showMarker(#{path.point.id});return false", :class => "awesome small button" %></td>
-			<td><%= link_to 'Destroy', [ :id => path.point,:map_id => map.id], :confirm => 'Are you sure?', :method => :delete, :class => "orange awesome small button" %></td>			
+			<th>Latitude (semicircle)</th>
+			<th>Longitude (semicircle)</th>
+			<th>Latitude (degrees)</th>
+			<th>Longitude (degrees)</th>
+			<th></th>
+			<th></th>
 		</tr>
-	<% end %>
-	<% end %>
-	</table>
+	
+		<% path_set.paths.each do |path| %>
+		
+			<% if path.point %>
+				<tr>
+					<td><%=h path.point.lat_sc %></td>
+					<td><%=h path.point.lon_sc %></td>
+					<td><%=h path.point.lat %></td>
+					<td><%=h path.point.lon %></td>
+					<td><%= link_to_function 'Show',"Effect.ScrollTo('map');#{path_set.unique_name}.showMarker(#{path.point.id});return false", :class => "awesome small button" %></td>
+					<td><%= link_to 'Destroy', [ :id => path.point,:map_id => map.id], :confirm => 'Are you sure?', :method => :delete, :class => "orange awesome small button" %></td>			
+				</tr>
+			<% end %>
+		<% end %>
+		</table>
+	</div>
 </div>

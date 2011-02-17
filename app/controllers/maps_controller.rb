@@ -27,9 +27,9 @@ class MapsController < ApplicationController
     @map_view.center_zoom_init([38.890498,-94.818192], 9)
     
     @path_sets = @map.path_sets
-    
-    point_group = {}
+
     @path_sets.each_with_index do |path_set, index|
+      point_group = {}
       
       marker_index = ( index % marker_num ) + 1 
         
@@ -43,11 +43,19 @@ class MapsController < ApplicationController
             point_group[path.point.id] = path.point.to_marker( icon )
           end           
         end
+        
+        if( point_group.size > 0)
+          group = GMarkerGroup.new(true, point_group)
+          @map_view.overlay_global_init(group, path_set.unique_name)
+          @map_view.record_init group.center_and_zoom_on_markers
+        end
+        
+ 
       end
       
-    group = GMarkerGroup.new(true, point_group)
-    @map_view.overlay_global_init(group, "marker_group")
-    @map_view.record_init group.center_and_zoom_on_markers
+      
+    
+ 
 
 
     respond_to do |format|
