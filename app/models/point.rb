@@ -33,10 +33,10 @@ class Point < ActiveRecord::Base
     des
   end
   
-  def to_marker
+  def to_marker( icon )
     title = self.name ? self.name : ""
     description = self.formatted_description
-    GMarker.new(self.location,:title => title, :info_window => description)
+    GMarker.new(self.location,:title => title, :info_window => description, :icon => icon)
   end
   
   def location

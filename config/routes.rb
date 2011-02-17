@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |mapping|
   mapping.resources :user, :shallow => true do |user|
     user.resources :maps do |map|
       map.resources :points
+      map.resources :path_sets
     end
   end
   

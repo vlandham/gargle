@@ -17,6 +17,8 @@ class MapsController < ApplicationController
   # GET /maps/1
   # GET /maps/1.xml
   def show
+    
+    marker_num = 6
     @map = Map.find(params[:id])
     
     @map_view = GMap.new("map")
@@ -27,10 +29,18 @@ class MapsController < ApplicationController
     @path_sets = @map.path_sets
     
     point_group = {}
-      @path_sets.each do |path_set|
+      @path_sets.each_with_index do |path_set, index|
+      
+      marker_index = ( index % marker_num ) + 1 
+        
+      marker_name = "marker#{marker_index}"
+      
+      @map_view.icon_global_init( GIcon.new( :image => "/images/markers/#{marker_name}.png",  :icon_size => GSize.new( 32,32 ), :icon_anchor => GPoint.new(16,32), :info_window_anchor => GPoint.new(9,2), :shadow_size => GSize.new(37, 32) ), marker_name)
+      icon = Variable.new(marker_name)
+        
         path_set.paths.each do |path|
           unless path.point.nil?
-            point_group[path.point.id] = path.point.to_marker
+            point_group[path.point.id] = path.point.to_marker( icon )
             if point_group.size == 1
               @map_view.center_zoom_init(path.point.location, 9)
             end

@@ -4,6 +4,7 @@
 <%= link_to '< All Maps', user_maps_path(current_user), :class => "blue awesome small button" %>
 <%= link_to 'Edit Map', edit_map_path(@map), :class => "awesome small button" %>
 <%= link_to 'Delete Map', @map, :method => :delete, :confirm => 'Are you sure?', :class => "red awesome small button" %>
+<%= link_to 'Import', new_map_path_set_path(@map), :class => "awesome small button" %>
 
 <% form_for([@map, Point.new]) do |f| %>
   <%= f.error_messages %>
