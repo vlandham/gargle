@@ -30,33 +30,44 @@ class PathSetsController < ApplicationController
     
     latitude_index = params[:dump][:latitude].to_i - 1
     longitude_index = params[:dump][:longitude].to_i - 1
-    
-    puts latitude_index.to_s
-    puts longitude_index.to_s
+    description_index = params[:dump][:description].to_i - 1
     
     count = 0
     
     params[:dump][:file].each_with_index do |line, index|        
         next unless line.chomp.length > 0
         columns = line.split(',')
-        if( latitude_index > columns.size || longitude_index > columns.size )
+        if( latitude_index >= columns.size  || longitude_index >= columns.size  )
           flash[:notice] = "Error: Invalid lat / lon indices!"
           redirect_to map_path(@map)
           return
         end
         
-        lat_value = columns[latitude_index].strip.to_i
-        lon_value = columns[longitude_index].strip.to_i
+        lat_value = columns[latitude_index].strip
+        lon_value = columns[longitude_index].strip
         
-        point = Point.new
-        point.lat = lat_value
-        point.lon = lon_value
         
-        point_path = Path.create
-        point_path.point = point
-        @path_set.paths << point_path
+        if( !lat_value.empty? && !lon_value.empty?)
+          lat_value = lat_value.to_i
+          lon_value = lon_value.to_i
+          description = ""
+          
+          if( description_index < columns.size )
+            description = columns[description_index]
+          end
+          
+   
+          point = Point.new
+          point.lat = lat_value
+          point.lon = lon_value
+          point.description = description unless description.empty?
+        
+          point_path = Path.create
+          point_path.point = point
+          @path_set.paths << point_path
+          count += 1
+        end
 
-        count += 1
     end
     
     @map.path_sets << @path_set
