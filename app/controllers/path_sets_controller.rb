@@ -53,10 +53,9 @@ class PathSetsController < ApplicationController
           description = ""
           
           if( description_index < columns.size )
-            description = columns[description_index]
+            description = columns[description_index].strip
           end
           
-   
           point = Point.new
           point.lat = lat_value
           point.lon = lon_value
