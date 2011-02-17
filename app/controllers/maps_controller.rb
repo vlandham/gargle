@@ -35,7 +35,7 @@ class MapsController < ApplicationController
         
       marker_name = "marker#{marker_index}"
       
-      @map_view.icon_global_init( GIcon.new( :image => "#{ActionController::Base.relative_url_root}/images/markers/#{marker_name}.png",  :icon_size => GSize.new( 32,32 ), :icon_anchor => GPoint.new(16,32), :info_window_anchor => GPoint.new(9,2), :shadow_size => GSize.new(37, 32) ), marker_name)
+      @map_view.icon_global_init( GIcon.new( :image => "#{ActionController::Base.relative_url_root}/images/markers/#{marker_name}.png",  :icon_size => GSize.new( 32,32 ), :icon_anchor => GPoint.new(16,32), :info_window_anchor => GPoint.new(15,5), :shadow_size => GSize.new(37, 32) ), marker_name)
       icon = Variable.new(marker_name)
         
         path_set.paths.each do |path|
